@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collins Websites — Collin Tice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* =============================================
+       CUSTOMIZATION VARIABLES — Edit these freely
+       ============================================= */
+    :root {
+      --accent: #5a60ba;          /* Brand accent color */
+      --nav-bg: #1a1a1a;          /* Nav + footer background */
+      --nav-text: #e8e0d4;        /* Nav + footer text */
+      --body-bg: #f5f2ee;         /* Main page background */
+      --body-text: #2c2c2c;       /* Main body text */
+      --card-bg: #ffffff;         /* Package card background */
+      --input-border: #c8bfb0;    /* Form input border */
+
+      /* ---- CONTACT INFO — Change these ---- */
+      --phone: "(615) 495-8075";
+      --email: "c02tice@gmail.com";
+      --instagram: "@collins_websites";
+      --facebook: "Collin.Tice";
+
+      /* ---- BOOKING EMAIL — Where form submissions go ---- */
+      --booking-email: "c02tice@gmail.com";
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--body-bg);
+      color: var(--body-text);
+      font-weight: 300;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      background: var(--nav-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      border-bottom: 1px solid rgba(184,153,106,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      font-style: italic;
+      cursor: default;
+      /* REPLACE TEXT BELOW with your photographer's name */
+      /* or swap for an <img> tag if using a logo image */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ========== PAGES ========== */
+    .page { display: none; min-height: calc(100vh - 64px); flex-direction: column; }
+    .page.active { display: flex; }
+    .page-body { flex: 1; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(184,153,106,0.3);
+    }
+
+    footer .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    footer .footer-col p,
+    footer .footer-col a {
+      font-size: 0.82rem;
+      color: rgba(232,224,212,0.75);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    footer .footer-col a:hover { color: var(--accent); }
+
+    footer .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.7rem;
+      color: rgba(232,224,212,0.35);
+      margin-top: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========== PAGE 1: ABOUT ME ========== */
+    #about .page-body {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 0;
+      min-height: calc(100vh - 64px - 200px);
+    }
+
+    .about-photo-col {
+      position: relative;
+      background: #ddd6cc;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    /* ---- REPLACE: swap background-image src with photographer's portrait ---- */
+    .about-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      background: linear-gradient(145deg, #c9bfb0 0%, #a89880 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .about-photo-placeholder img {
+      /* USAGE: <img src="photographers headshot.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;"> */
+      width: 80px;
+      opacity: 0.4;
+    }
+
+    .photo-icon {
+      width: 64px;
+      height: 64px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .about-text-col {
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    /* ---- LOGO AREA ---- */
+    .logo-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .logo-placeholder {
+      width: 180px;
+      height: 180px;
+      border: 1.5px dashed var(--accent);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.7;
+      /* REPLACE: swap this div with <img src="your-logo.png" alt="Logo" style="max-height:72px;"> */
+    }
+
+    .about-text-col h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      color: var(--body-text);
+    }
+
+    .about-text-col h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .about-intro {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #555;
+      max-width: 520px;
+      /* REPLACE TEXT: swap this paragraph content with photographer's bio */
+    }
+
+    .accent-line {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ========== PAGE 2: MY WORK ========== */
+    #work .page-body { padding: 0; }
+
+    .work-hero {
+      padding: 5rem 4rem 3rem;
+      text-align: center;
+    }
+
+    .work-hero .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .work-hero h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .work-hero p {
+      font-size: 0.95rem;
+      color: #666;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ---- PHOTO GRID ---- */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 0 8px 8px;
+      align-items: start;
+    }
+
+    .photo-grid .tall { }
+    .photo-grid .wide { grid-column: span 2; }
+
+    .photo-slot {
+      background: linear-gradient(145deg, #d4cdc4 0%, #beb5a8 100%);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, filter 0.3s;
+      border-radius: 2px;
+    }
+
+    .photo-slot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .photo-slot:hover { transform: scale(0.985); filter: brightness(0.92); }
+
+    .photo-slot .slot-icon {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(80,70,60,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    /* USAGE: Replace each .photo-slot div with:
+       <div class="photo-slot [tall|wide]" style="background-image:url('photo.jpg');background-size:cover;background-position:center;"></div> */
+
+    /* ========== PAGE 3: PACKAGES ========== */
+    #packages .page-body {
+      padding: 5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .packages-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .packages-header .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .packages-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border: 1px solid #e0d8ce;
+      border-radius: 2px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.3s, transform 0.3s;
+      position: relative;
+    }
+
+    .package-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+
+    .package-card.featured {
+      border-color: var(--accent);
+      background: #1a1a1a;
+      color: var(--nav-text);
+    }
+
+    .package-card.featured .pkg-name,
+    .package-card.featured .pkg-price,
+    .package-card.featured .pkg-feature {
+      color: var(--nav-text);
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 3px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .pkg-duration {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .pkg-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      /* REPLACE: Change package name here */
+    }
+
+    .pkg-price {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      /* REPLACE: Change price here */
+    }
+
+    .pkg-price span {
+      font-size: 1rem;
+      color: #999;
+      font-weight: 300;
+    }
+
+    .pkg-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .pkg-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .pkg-feature {
+      font-size: 0.82rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      /* REPLACE: Change package features here */
+    }
+
+    .pkg-feature::before {
+      content: '—';
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    .pkg-btn {
+      margin-top: auto;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .pkg-btn:hover,
+    .package-card.featured .pkg-btn {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .package-card.featured .pkg-btn:hover {
+      background: #a0864e;
+    }
+
+    /* ========== PAGE 4: BOOK ========== */
+    #book .page-body {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      min-height: calc(100vh - 64px - 200px);
+    }
+
+    .book-aside {
+      background: var(--nav-bg);
+      padding: 5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .book-aside .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .book-aside h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--nav-text);
+      line-height: 1.15;
+    }
+
+    .book-aside p {
+      font-size: 0.88rem;
+      color: rgba(232,224,212,0.6);
+      line-height: 1.8;
+      max-width: 320px;
+    }
+
+    .book-aside .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .book-aside .contact-info a {
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .book-form-col {
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      max-width: 460px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      border: none;
+      border-bottom: 1px solid var(--input-border);
+      background: transparent;
+      padding: 0.6rem 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--body-text);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+      border: 1px solid var(--input-border);
+      padding: 0.75rem;
+      border-radius: 2px;
+    }
+
+    .form-group textarea:focus { border-color: var(--accent); }
+
+    .form-submit {
+      padding: 1rem 2.5rem;
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover { background: var(--accent); }
+
+    .form-success {
+      display: none;
+      background: #f0ebe3;
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.5rem;
+      font-size: 0.88rem;
+      color: #555;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.7rem; }
+
+      #about .page-body { grid-template-columns: 1fr; }
+      .about-photo-col { min-height: 300px; }
+      .about-text-col { padding: 3rem 1.5rem; }
+      .about-text-col h1 { font-size: 2.2rem; }
+
+      .work-hero { padding: 3rem 1.5rem 2rem; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid .wide { grid-column: span 1; }
+
+      #packages .page-body { padding: 3rem 1.5rem; }
+
+      #book .page-body { grid-template-columns: 1fr; }
+      .book-aside { padding: 3rem 1.5rem; }
+      .book-form-col { padding: 3rem 1.5rem; }
+
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+  <div class="nav-logo">
+    Collins Websites
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('about')" id="nav-about" class="active">About Me</a></li>
+    <li><a href="#" onclick="showPage('work')" id="nav-work">My Work</a></li>
+    <li><a href="#" onclick="showPage('packages')" id="nav-packages">Packages</a></li>
+    <li><a href="#" onclick="showPage('book')" id="nav-book">Book an Appointment</a></li>
+  </ul>
+</nav>
+
+
+<!-- ========================================
+     PAGE 1: ABOUT ME
+     ======================================== -->
+<section class="page active" id="about">
+  <div class="page-body">
+
+    <!-- LEFT: Photographer portrait -->
+    <div class="about-photo-col">
+      <!--
+        REPLACE THIS DIV with your photo:
+        <img src="your-portrait.jpg" alt="Photographer" style="width:100%;height:100%;object-fit:cover;display:block;">
+      -->
+      <img src="headshot.jpg" alt="Collin Tice" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+
+    <!-- RIGHT: Intro text -->
+    <div class="about-text-col">
+      <!-- LOGO: Replace the dashed box with your logo image -->
+      <div class="logo-area">
+        <div class="logo-placeholder">
+          <img src="logo.png" alt="Logo" style="max-height:180px; width:auto; display:block;">
+        </div>
+      </div>
+
+      <div>
+        <!-- REPLACE: Name and tagline -->
+        <h1>Hello, I'm<br><em>Collin Tice</em></h1>
+        <p style="margin-top:0.75rem;font-size:1rem;color:var(--accent);letter-spacing:0.05em;font-style:italic;">"Functional website you own!"</p>
+      </div>
+
+      <div class="accent-line"></div>
+
+      <p class="about-intro">
+        I have a master's in accounting from the University of Alabama, and in this program, I learned how to code. This prompted me to start building websites for fun. I realized a lot of people could use a website to make their business look more professional. Most website companies are a monthly fee, but I wanted to create something my clients can own. When you purchase a website from me it is all yours! Take a look at the packages to see more details!
+      </p>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <footer>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <!-- REPLACE: Your phone number -->
+      <p>📞 615-495-8075</p>
+      <!-- REPLACE: Your email -->
+      <a href="mailto:c02tice@gmail.com">✉️ c02tice@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <!-- REPLACE: Your Instagram handle -->
+      <a href="https://instagram.com/collins_websites" target="_blank">Instagram — @collins_websites</a>
+      <!-- REPLACE: Your Facebook page -->
+      
+    </div>
+    <div class="footer-col">
+      <!-- REPLACE: Photographer name & year -->
+      <h4>Collins Websites</h4>
+      <p>Functional website you own!</p>
+    </div>
+    <p class="footer-copy">© 2026 collin_websites — All Rights Reserved</p>
+  </footer>
+</section>
+
+
+<!-- ========================================
+     PAGE 2: MY WORK
+     ======================================== -->
+<section class="page" id="work">
+  <div class="page-body">
+    <div class="work-hero">
+      <p class="eyebrow">The Portfolio</p>
+      <h2>Examples of small business websites!</h2>
+      <p>Check out what could be yours! All are customizable for your preferences!</p>
+    </div>
+
+    <!--
+      PHOTO GRID: 12 slots ready for your images.
+      To add a photo, replace the inner content of any .photo-slot with:
+        <img src="photo.jpg" style="width:100%;height:auto;display:block;">
+      Add class "tall" to make a slot span 2 rows.
+      Add class "wide" to make a slot span 2 columns.
+    -->
+    <div class="photo-grid">
+      <div class="photo-slot tall">
+        <img src="portfolio.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="portfolio1.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="portfolio2.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="portfolio3.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot wide">
+        <img src="portfolio4.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="photographer.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot tall">
+        <img src="photographer1.png" style="width:100%;height:auto;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="photographer2.png" style="width:100%;height:90%;display:block;">
+      </div>
+      <div class="photo-slot">
+        <img src="photographer3.png" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 615-495-8075</p>
+      <a href="mailto:c02tice@gmail.com">✉️ c02tice@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://instagram.com/collins_websites" target="_blank">Instagram — @collins_websites</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Collins Websites</h4>
+      <p>Functional website you own!</p>
+    </div>
+    <p class="footer-copy">© 2026 collin_websites — All Rights Reserved</p>
+  </footer>
+</section>
+
+
+<!-- ========================================
+     PAGE 3: PACKAGES
+     ======================================== -->
+<section class="page" id="packages">
+  <div class="page-body">
+    <div class="packages-header">
+      <p class="eyebrow">Investment</p>
+      <h2>Choose Your Session</h2>
+    </div>
+
+    <!--
+      PACKAGES: Edit each card to match your actual pricing.
+      - .pkg-duration: session length
+      - .pkg-name: package name
+      - .pkg-price: your price (replace $XXX)
+      - .pkg-features li: what's included
+      Add class "featured" to highlight a card (dark background).
+    -->
+    <div class="packages-grid">
+
+      <!-- PACKAGE 1 -->
+      <div class="package-card">
+        <p class="pkg-duration">1 Website</p>
+        <p class="pkg-name">Basic</p>
+        <p class="pkg-price">$250 <span>+ $20/yr</span></p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li class="pkg-feature">1 website</li>
+          <li class="pkg-feature">Client must reach out directly</li>
+        </ul>
+        <button class="pkg-btn" onclick="showPage('book')">Get Started</button>
+      </div>
+
+      <!-- PACKAGE 2 -->
+      <div class="package-card">
+        <p class="pkg-duration">1 Website</p>
+        <p class="pkg-name">Fluid</p>
+        <p class="pkg-price">$300 <span>+ $20/yr</span></p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li class="pkg-feature">1 website</li>
+          <li class="pkg-feature">EmailJS connection</li>
+        </ul>
+        <button class="pkg-btn" onclick="showPage('book')">Get Started</button>
+      </div>
+
+      <!-- PACKAGE 3 — Featured / Most Popular -->
+      <div class="package-card featured">
+        <span class="pkg-badge">Most Popular</span>
+        <p class="pkg-duration">1 Website</p>
+        <p class="pkg-name">Supreme</p>
+        <p class="pkg-price">$375 <span>+ $20/yr</span></p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li class="pkg-feature">1 website</li>
+          <li class="pkg-feature">EmailJS connection</li>
+          <li class="pkg-feature">2 free updates</li>
+        </ul>
+        <button class="pkg-btn" onclick="showPage('book')">Get Started</button>
+      </div>
+
+      <!-- PACKAGE 4 -->
+      <div class="package-card">
+        <p class="pkg-duration">1 Update</p>
+        <p class="pkg-name">Updates</p>
+        <p class="pkg-price">$50 <span>/ update</span></p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li class="pkg-feature">Update to make website more current</li>
+        </ul>
+        <button class="pkg-btn" onclick="showPage('book')">Get Started</button>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:2.5rem;font-size:0.85rem;color:#666;line-height:1.8;">All purchases come with a 1-hour meeting to describe the vision and answer any questions you may have.<br>Feel free to always reach out!</p>
+  </div>
+
+  <footer>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 615-495-8075</p>
+      <a href="mailto:c02tice@gmail.com">✉️ c02tice@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://instagram.com/collins_websites" target="_blank">Instagram — @collins_websites</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Collins Websites</h4>
+      <p>Functional website you own!</p>
+    </div>
+    <p class="footer-copy">© 2026 collin_websites — All Rights Reserved</p>
+  </footer>
+</section>
+
+
+<!-- ========================================
+     PAGE 4: BOOK AN APPOINTMENT
+     ======================================== -->
+<section class="page" id="book">
+  <div class="page-body">
+    <div class="book-aside">
+      <p class="eyebrow">Let's Connect</p>
+      <h2>Book Your Session</h2>
+      <p>
+        Ready to have your own website? Fill out the info to reach out and schedule your 1 hour session!
+      </p>
+      <div class="contact-info">
+        <a href="tel:6154958075">📞 615-495-8075</a>
+        <a href="mailto:c02tice@gmail.com">✉️ c02tice@gmail.com</a>
+        <a href="https://instagram.com/collins_websites" target="_blank">📸 @collins_websites</a>
+      </div>
+    </div>
+
+    <div class="book-form-col">
+      <form class="booking-form" id="bookingForm">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">What Are You Interested In?</label>
+          <textarea id="message" name="message"
+            placeholder="Tell me about your session — type of shoot, preferred dates, location ideas, or any questions you have…"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Inquiry →</button>
+
+        <!-- Success message shown after submit -->
+        <div class="form-success" id="formSuccess">
+          ✓ Thank you! Your message has been sent. Response should be within 24 hours.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 615-495-8075</p>
+      <a href="mailto:c02tice@gmail.com">✉️ c02tice@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://instagram.com/collins_websites" target="_blank">Instagram — @collins_websites</a>
+      
+    </div>
+    <div class="footer-col">
+      <h4>Collins Websites</h4>
+      <p>Functional website you own!</p>
+    </div>
+    <p class="footer-copy">© 2026 collin_websites — All Rights Reserved</p>
+  </footer>
+</section>
+
+
+<script>
+  /* ========== PAGE NAVIGATION ========== */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+    return false;
+  }
+
+  /* ========== BOOKING FORM + EMAIL ========== */
+  /*
+    EMAIL SETUP INSTRUCTIONS:
+    This form uses EmailJS (https://www.emailjs.com) — free for up to 200 emails/month.
+    Steps:
+      1. Sign up at emailjs.com
+      2. Add an Email Service (Gmail works great)
+      3. Create an Email Template — use variables: {{from_name}}, {{from_email}}, {{phone}}, {{message}}
+      4. Replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID below
+      5. The form will send to c02tice@gmail.com as configured in your EmailJS template
+  */
+  (function() {
+     emailjs.init("MFb0JrdAtYa0_Tuac");
+  })();
+
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName  = document.getElementById('lastName').value;
+    const email     = document.getElementById('email').value;
+    const phone     = document.getElementById('phone').value;
+    const message   = document.getElementById('message').value;
+
+    const templateParams = {
+      from_name:  firstName + ' ' + lastName,
+      from_email: email,
+      phone:      phone || 'Not provided',
+      message:    message,
+      to_email:   'c02tice@gmail.com'  // Booking notifications go here
+    };
+
+    emailjs.send('service_blsxp0i', 'template_6mvnx9b', templateParams)
+      .then(function() {
+        showSuccess();
+      }, function(error) {
+        alert('Something went wrong. Please try emailing directly.');
+        console.error('EmailJS error:', error);
+      });
+
+  });
+
+  function showSuccess() {
+    document.getElementById('bookingForm').reset();
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    setTimeout(() => { success.style.display = 'none'; }, 6000);
+  }
+</script>
+
+</body>
+</html>
