@@ -277,49 +277,80 @@
       line-height: 1.8;
     }
 
-    /* ---- PHOTO GRID ---- */
-    .photo-grid {
+    /* ---- WEBSITE SHOWCASE CARDS ---- */
+    .showcase-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 0 8px 8px;
-      align-items: start;
+      gap: 2rem;
+      padding: 2rem 4rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .photo-grid .tall { }
-    .photo-grid .wide { grid-column: span 2; }
-
-    .photo-slot {
-      background: linear-gradient(145deg, #d4cdc4 0%, #beb5a8 100%);
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s, filter 0.3s;
-      border-radius: 2px;
-    }
-
-    .photo-slot img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    .photo-slot:hover { transform: scale(0.985); filter: brightness(0.92); }
-
-    .photo-slot .slot-icon {
-      width: 36px;
-      height: 36px;
-      border: 1.5px solid rgba(80,70,60,0.3);
-      border-radius: 50%;
+    .showcase-card {
+      background: var(--card-bg);
+      border: 1px solid #e0d8ce;
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
 
-    /* USAGE: Replace each .photo-slot div with:
-       <div class="photo-slot [tall|wide]" style="background-image:url('photo.jpg');background-size:cover;background-position:center;"></div> */
+    .showcase-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+      transform: translateY(-4px);
+    }
+
+    .showcase-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .showcase-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--body-text);
+      line-height: 1.2;
+    }
+
+    .showcase-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    .showcase-card p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.8;
+      flex: 1;
+    }
+
+    .showcase-btn {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .showcase-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
 
     /* ========== PAGE 3: PACKAGES ========== */
     #packages .page-body {
@@ -634,8 +665,7 @@
       .about-text-col h1 { font-size: 2.2rem; }
 
       .work-hero { padding: 3rem 1.5rem 2rem; }
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
-      .photo-grid .wide { grid-column: span 1; }
+      .showcase-grid { grid-template-columns: 1fr; padding: 1.5rem; }
 
       #packages .page-body { padding: 3rem 1.5rem; }
 
@@ -738,41 +768,41 @@
       <p>Check out what could be yours! All are customizable for your preferences!</p>
     </div>
 
-    <!--
-      PHOTO GRID: 12 slots ready for your images.
-      To add a photo, replace the inner content of any .photo-slot with:
-        <img src="photo.jpg" style="width:100%;height:auto;display:block;">
-      Add class "tall" to make a slot span 2 rows.
-      Add class "wide" to make a slot span 2 columns.
-    -->
-    <div class="photo-grid">
-      <div class="photo-slot tall">
-        <img src="portfolio.png" style="width:100%;height:auto;display:block;">
+    <div class="showcase-grid">
+
+      <!-- CARD 1: Personal Portfolio -->
+      <div class="showcase-card">
+        <div class="showcase-card-icon">🧑‍💼</div>
+        <h3>Personal Portfolio</h3>
+        <div class="showcase-divider"></div>
+        <!-- REPLACE: Add your description for a personal portfolio website -->
+        <p>A clean, professional portfolio to showcase who you are, what you do, and the work you're proud of. Perfect for freelancers, job seekers, and creatives.</p>
+        <!-- REPLACE: Add your example website URL in the href below -->
+        <a class="showcase-btn" href="https://collin-tice.github.io/portfolio_template/" target="_blank">View Example →</a>
       </div>
-      <div class="photo-slot">
-        <img src="portfolio1.png" style="width:100%;height:auto;display:block;">
+
+      <!-- CARD 2: Photography Website -->
+      <div class="showcase-card">
+        <div class="showcase-card-icon">📷</div>
+        <h3>Photography Website</h3>
+        <div class="showcase-divider"></div>
+        <!-- REPLACE: Add your description for a photography website -->
+        <p>A stunning gallery-style site built to let your photos do the talking. Designed to attract clients, display your portfolio, and make booking easy.</p>
+        <!-- REPLACE: Add your example website URL in the href below -->
+        <a class="showcase-btn" href="https://collin-tice.github.io/photography_outline/" target="_blank">View Example →</a>
       </div>
-      <div class="photo-slot">
-        <img src="portfolio2.png" style="width:100%;height:auto;display:block;">
+
+      <!-- CARD 3: Small Business -->
+      <div class="showcase-card">
+        <div class="showcase-card-icon">🏪</div>
+        <h3>Small Business</h3>
+        <div class="showcase-divider"></div>
+        <!-- REPLACE: Add your description for a small business website -->
+        <p>Give your business a professional online presence that builds trust and brings in customers. Includes your services, contact info, and everything a client needs.</p>
+        <!-- REPLACE: Add your example website URL in the href below -->
+        <a class="showcase-btn" href="YOUR_LINK_HERE" target="_blank">You're Loooking at It →</a>
       </div>
-      <div class="photo-slot">
-        <img src="portfolio3.png" style="width:100%;height:auto;display:block;">
-      </div>
-      <div class="photo-slot wide">
-        <img src="portfolio4.png" style="width:100%;height:auto;display:block;">
-      </div>
-      <div class="photo-slot">
-        <img src="photographer.png" style="width:100%;height:auto;display:block;">
-      </div>
-      <div class="photo-slot tall">
-        <img src="photographer1.png" style="width:100%;height:auto;display:block;">
-      </div>
-      <div class="photo-slot">
-        <img src="photographer2.png" style="width:100%;height:90%;display:block;">
-      </div>
-      <div class="photo-slot">
-        <img src="photographer3.png" style="width:100%;height:auto;display:block;">
-      </div>
+
     </div>
   </div>
 
@@ -971,7 +1001,7 @@
   </footer>
 </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
   /* ========== PAGE NAVIGATION ========== */
